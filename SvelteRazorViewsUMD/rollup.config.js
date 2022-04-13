@@ -5,7 +5,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import css from 'rollup-plugin-css-only';
 
 export default {
-    // This `main.js` file we wrote
     // each svelte component is built into a js and css file
     input: `wwwroot/js/${process.env.entry}.svelte`,
     output: {
@@ -16,12 +15,8 @@ export default {
     },
     plugins: [
         svelte({
-            //dev: true,
-            //preprocess: [sveltePreprocess({ sourceMap: false })],
             // Tell the svelte plugin where our svelte files are located
             include: 'wwwroot/**/*.svelte',
-            //emitCss: false,
-
         }),
         css({ output: `${process.env.entry}.css` }),
         resolve({

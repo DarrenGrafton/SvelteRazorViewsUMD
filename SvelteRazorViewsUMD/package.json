@@ -1,0 +1,18 @@
+{
+  "name": "SvelteRazorViews",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rollup -c rollup.config.js --environment entry:Checklist && rollup -c rollup.config.js --environment entry:App",
+    "dev": "rollup -c rollup.config.js -w --environment entry:Checklist && rollup -c rollup.config.js -w --environment entry:App"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "rollup": "^2.39.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "svelte": "^3.46.6",
+    "@rollup/plugin-json": "^4.1.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "@rollup/plugin-commonjs": "^21.0.3"
+  }
+}

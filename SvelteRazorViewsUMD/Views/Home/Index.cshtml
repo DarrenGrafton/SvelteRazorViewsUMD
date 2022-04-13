@@ -1,0 +1,54 @@
+﻿@model List<SvelteRazorViewsUMD.Models.CheckListItemModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div id="app">
+
+    <p>Hello World from server.  This is replaced when JS loads</p>
+
+</div>
+
+<div style="height:500px">
+    <div id="check-list">
+        <ol>
+            @foreach (var item in Model)
+            {
+                <li>@item.Description <input type="checkbox" data-id="@item.Id" checked="@item.Done" /></li>
+            }
+        </ol>
+    </div>
+</div>
+
+
+<script src="~/js/build/Checklist.js"></script>
+<link rel="stylesheet" href="~/js/build/Checklist.css" />
+
+<script src="~/js/build/App.js"></script>
+<link rel="stylesheet" href="~/js/build/App.css" />
+<script>
+
+    var listData = @Html.Raw(Json.Serialize(Model));
+
+    const checklist = document.querySelector('#check-list');
+
+    checklist.innerHTML='';
+
+    new Checklist({
+        target: checklist,
+        props: { todos: listData}
+    })
+
+    const app = document.querySelector('#app');
+
+    app.innerHTML='';
+
+    new App({
+        target: app,
+        props: {name: 'World', id: 'world'}
+    })
+    
+
+</script>
